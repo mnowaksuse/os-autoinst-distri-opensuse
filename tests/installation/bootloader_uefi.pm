@@ -108,6 +108,9 @@ sub run() {
     type_string " \\\n";    # changed the line before typing video params
                             # https://wiki.archlinux.org/index.php/Kernel_Mode_Setting#Forcing_modes_and_EDID
     type_string_slow 'Y2DEBUG=1 ';
+    if (check_var('VIRSH_VMM_FAMILY', 'hyperv')) {
+        type_string " video=hyperv_fb:1024x768";
+    }
     if (!is_jeos && (check_var('ARCH', 'i586') || check_var('ARCH', 'x86_64'))) {
         type_string_slow 'vga=791 ';
         type_string_slow 'video=1024x768-16 ';
