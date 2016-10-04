@@ -66,8 +66,8 @@ sub run() {
 
     assert_screen 'linux-login';
 
-    # Without this login name and password won't get to the system. The
-    # get lost somewhere. Applies for all systems installed via svirt.
+    # Without this login name and password won't get to the system. They get
+    # lost somewhere. Applies for all systems installed via svirt, but zKVM.
     if (check_var('BACKEND', 'svirt') and !check_var('ARCH', 's390x')) {
         wait_idle;
     }
