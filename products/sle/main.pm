@@ -384,6 +384,9 @@ sub load_boot_tests() {
         if (check_var("VIRSH_VMM_FAMILY", "hyperv")) {
             loadtest "installation/bootloader_hyperv";
         }
+        elsif (check_var("VIRSH_VMM_FAMILY", "virtualbox")) {
+            loadtest "installation/bootloader_virtualbox";
+        }
         else {
             loadtest "installation/bootloader_svirt";
         }

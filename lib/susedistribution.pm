@@ -250,6 +250,7 @@ sub init_consoles {
             {
                 hostname => $hostname,
                 port     => $port,
+                depth    => 24,
                 password => $testapi::password
             });
     }
