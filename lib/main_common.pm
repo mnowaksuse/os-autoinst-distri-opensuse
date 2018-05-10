@@ -1325,9 +1325,10 @@ sub load_yast2_gui_tests {
 sub load_extra_tests_desktop {
     if (check_var('DISTRI', 'sle')) {
         # start extra x11 tests from here
-        loadtest 'x11/vnc_two_passwords';
+        #loadtest 'x11/vnc_two_passwords';
         # TODO: check why this is not called on opensuse
         loadtest 'x11/user_defined_snapshot';
+        return 1;
     }
     elsif (check_var('DISTRI', 'opensuse')) {
         if (gnomestep_is_applicable()) {
@@ -1448,8 +1449,8 @@ sub load_extra_tests {
     return if get_var("INSTALLONLY") || get_var("DUALBOOT") || get_var("RESCUECD");
 
     # setup $serialdev permission and so on
-    loadtest "console/consoletest_setup";
-    loadtest "console/hostname";
+    #loadtest "console/consoletest_setup";
+    #loadtest "console/hostname";
     if (any_desktop_is_applicable()) {
         load_extra_tests_desktop;
     }

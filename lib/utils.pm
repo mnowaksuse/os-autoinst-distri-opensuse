@@ -486,7 +486,7 @@ sub assert_shutdown_and_restore_system {
     console($vnc_console)->disable_vnc_stalls;
     assert_shutdown($shutdown_timeout);
     if ($action eq 'reboot') {
-        reset_consoles;
+        reset_consoles(skip_consoles => qw(svirt));
         my $svirt = console('svirt');
         # Set disk as a primary boot device
         if (check_var('ARCH', 's390x') or get_var('NETBOOT')) {

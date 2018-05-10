@@ -17,6 +17,8 @@ use testapi;
 
 sub run {
     my ($self) = @_;
+    reset_consoles({skip_consoles => ['svirt', 'xxx']});
+    die;
     # We have tests that boot from HDD and wait for DVD boot menu's timeout, so
     # the timeout here must cover it. UEFI DVD adds some 60 seconds on top.
     my $timeout = get_var('UEFI') ? 140 : 80;
@@ -27,7 +29,7 @@ sub run {
         $self->wait_boot(bootloader_time => $timeout);
     }
 }
-
+sub post_fail_hook {}
 sub test_flags {
     return {fatal => 1, milestone => 1};    # add milestone flag to save setup in lastgood VM snapshot
 }
